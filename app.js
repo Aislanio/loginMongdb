@@ -30,7 +30,9 @@ function chekToken(req,res,next){
     try{
         const secret = process.env.SECRET
 
-        jwt
+        jwt.verify(token,secret)
+
+        next()
     }catch(err){
         res.status(400).json({msg:"Token Invalido"})
     }
